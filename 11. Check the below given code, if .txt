@@ -1,0 +1,38 @@
+11. Check the below given code, if there are any issues, fix them and explain the output
+
+const numbers = [1, 2, 3, 4, 5];
+
+const result = numbers.reduce((acc, num) => {
+
+  if (num % 2 === 0) {
+
+    acc.evens.push(num);
+
+  } else {
+
+    acc.odds.push(num);
+
+  }
+
+  return acc;
+
+});
+
+
+
+console.log(result);
+
+Ans  The given code has a minor issue. The reduce function is not initialized with an initial accumulator value, which means it will start with the first element of the array as the initial accumulator value. In this case, the first element is 1, so the accumulator will be an object with no properties evens and odds, leading to an error when trying to push values into non-existent properties.
+
+const numbers = [1, 2, 3, 4, 5];
+
+const result = numbers.reduce((acc, num) => {
+  if (num % 2 === 0) {
+    acc.evens.push(num);
+  } else {
+    acc.odds.push(num);
+  }
+  return acc;
+}, { evens: [], odds: [] });
+
+console.log(result);
